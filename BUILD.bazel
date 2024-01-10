@@ -1,0 +1,16 @@
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_compile")
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_grpc_library")
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_grpc_compile")
+
+proto_library(
+    name = "service_proto",
+    srcs = ["service.proto"],
+    visibility = ["//visibility:public"],
+)
+
+
+cpp_proto_compile(
+    name = "service_proto_cc",
+    protos = ["service_proto"],
+    extra_protoc_files = ["service.proto"],
+)
